@@ -71,20 +71,25 @@ class Simulation:
     def update(self):
         turtle.clear()
         self.draw_border()
-        for j in range(1,10):
-            for i in self.balls:
-                i.draw_ball()
-                i.move_ball(self.dt)
-                i.update_ball_velocity(self.canvas_width, self.canvas_height)
-                turtle.update()
-            turtle.update()
-            count.clear()
-            count.draw(j)
-            count.my_delay(delay_in_seconds)
+        for i in self.balls:
+            i.draw_ball()
+            i.move_ball(self.dt)
+            i.update_ball_velocity(self.canvas_width, self.canvas_height)
         turtle.update()
+
     def run(self):
         while True:
             self.update()
+            for j in range(1, 10):
+                self.update()
+                turtle.update()
+                self.update()
+                count.clear()
+                self.update()
+                count.draw(j)
+                self.update()
+                count.my_delay(delay_in_seconds)
+                self.update()
 
 class Count:
     def __init__(self, my_turtle, color):
